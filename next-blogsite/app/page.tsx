@@ -1,4 +1,6 @@
 import Posts from "./components/Posts"
+//after two refreshes after 10secs data changes will be shown
+export const revalidate = 10
 
 export default function Home() {
   return (
