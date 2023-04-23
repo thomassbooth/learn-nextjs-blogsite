@@ -1,6 +1,8 @@
+'use client'
 import React from 'react'
 import Link from 'next/link'
 import {FaYoutube, FaTwitter, FaGithub, FaLaptop} from 'react-icons/fa'
+import { signIn, signOut, useSession } from 'next-auth/react'
 
 export default function Navbar() {
   return (
@@ -24,6 +26,22 @@ export default function Navbar() {
                 <Link className = 'text-white/90 hover:text-white' href = 'https://twitter.com/thomassboothh'>
                     <FaTwitter/>
                 </Link>
+                <h1 className = 'text-xl font-bold text-white grid place-content-center mb-2 md:mb-0'>
+                    <Link href = '/api/auth/signin' className = 'text-white/90 no-underline hover:text-white'>
+                        <p onClick = {e => {
+                            e.preventDefault()
+                            signIn('github')
+                        }}>sign in</p>
+                    </Link>
+                </h1>
+                <h1 className = 'text-xl font-bold text-white grid place-content-center mb-2 md:mb-0'>
+                    <Link href = '/api/auth/signout' className = 'text-white/90 no-underline hover:text-white'>
+                        <p onClick = {e => {
+                            e.preventDefault()
+                            signOut()
+                        }}>sign out</p>
+                    </Link>
+                </h1>
             </div>
         </div>
     </nav>
